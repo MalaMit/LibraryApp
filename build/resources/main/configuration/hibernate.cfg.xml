@@ -1,0 +1,39 @@
+<?xml version='1.0' encoding='utf-8'?>
+<!DOCTYPE hibernate-configuration PUBLIC "-//Hibernate/Hibernate Configuration DTD//EN"
+    "http://www.hibernate.org/dtd/hibernate-configuration-3.0.dtd">
+    <hibernate-configuration>
+		<session-factory>
+
+			<!-- JDBC Database connection settings -->
+			<property name="connection.driver_class">com.mysql.jdbc.Driver</property>
+			<property name="connection.url">jdbc:mysql://localhost:3306/library?useSSL=false</property>
+			<property name="connection.username">root</property>
+			<property name="connection.password">1234</property>
+
+			<!-- JDBC connection pool settings -->
+			<property name="connection.pool_size">20</property>
+
+			<!-- Select our SQL dialect -->
+			<property name="dialect">org.hibernate.dialect.MySQL5InnoDBDialect</property>
+
+			<!-- Echo the SQL to stdout -->
+			<property name="show_sql">true</property>
+
+			<!-- Set the current session context -->
+			<property name="current_session_context_class">thread</property>
+
+			<!-- Drop the existing tables and create new one -->
+
+			<property name="hbm2ddl.auto">update</property>
+
+			<!-- Mapped classes -->
+			<mapping class="entities.Administrator" />
+			<mapping class="entities.Book" />
+			<mapping class="entities.Reader" />
+			<mapping class="entities.Catalogue" />
+			<mapping class="entities.BorrowedBook" />
+			
+			
+		</session-factory>
+
+	</hibernate-configuration>

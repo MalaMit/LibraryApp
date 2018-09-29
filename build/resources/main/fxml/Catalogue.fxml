@@ -1,0 +1,136 @@
+<?xml version="1.0" encoding="UTF-8"?>
+
+<?import com.jfoenix.controls.JFXButton?>
+<?import com.jfoenix.controls.JFXComboBox?>
+<?import com.jfoenix.controls.JFXTextField?>
+<?import com.jfoenix.controls.JFXTreeTableView?>
+<?import javafx.geometry.Insets?>
+<?import javafx.scene.control.Label?>
+<?import javafx.scene.control.TreeTableColumn?>
+<?import javafx.scene.layout.AnchorPane?>
+<?import javafx.scene.layout.HBox?>
+<?import javafx.scene.layout.VBox?>
+<?import javafx.scene.text.Font?>
+
+<AnchorPane maxHeight="-Infinity" maxWidth="-Infinity" minHeight="-Infinity" minWidth="-Infinity" prefHeight="660.0" prefWidth="850.0" xmlns="http://javafx.com/javafx/9.0.1" xmlns:fx="http://javafx.com/fxml/1" fx:controller="controller.CatalogueController">
+   <children>
+      <HBox alignment="CENTER" prefHeight="110.0" prefWidth="850.0" AnchorPane.leftAnchor="0.0" AnchorPane.rightAnchor="0.0" AnchorPane.topAnchor="0.0">
+         <children>
+            <VBox alignment="CENTER" prefHeight="80.0" prefWidth="300.0">
+               <children>
+                  <Label prefHeight="20.0" prefWidth="225.0" text="Data to search:">
+                     <font>
+                        <Font name="Arial Bold" size="15.0" />
+                     </font>
+                     <VBox.margin>
+                        <Insets bottom="5.0" top="10.0" />
+                     </VBox.margin></Label>
+                  <JFXTextField fx:id="dataSearch" alignment="CENTER" prefHeight="40.0" prefWidth="200.0">
+                     <VBox.margin>
+                        <Insets left="30.0" right="30.0" />
+                     </VBox.margin></JFXTextField>
+               </children>
+            </VBox>
+            <VBox alignment="CENTER" prefHeight="80.0" prefWidth="300.0">
+               <children>
+                  <Label prefHeight="20.0" prefWidth="200.0" text="Type search:">
+                     <font>
+                        <Font name="Arial Bold" size="15.0" />
+                     </font>
+                     <VBox.margin>
+                        <Insets bottom="5.0" top="10.0" />
+                     </VBox.margin></Label>
+                  <JFXComboBox fx:id="typeSearch" prefHeight="40.0" prefWidth="200.0" />
+               </children>
+            </VBox>
+            <VBox alignment="CENTER" prefHeight="80.0" prefWidth="300.0">
+               <children>
+                  <JFXButton fx:id="searchButt" onAction="#search" prefHeight="40.0" prefWidth="200.0" text="Search">
+                     <VBox.margin>
+                        <Insets top="30.0" />
+                     </VBox.margin></JFXButton>
+               </children>
+            </VBox>
+         </children>
+      </HBox>
+      <VBox layoutX="722.0" layoutY="110.0" prefHeight="550.0" prefWidth="128.0" AnchorPane.bottomAnchor="0.0" AnchorPane.rightAnchor="0.0" AnchorPane.topAnchor="110.0">
+         <children>
+            <VBox alignment="CENTER" prefHeight="90.0" prefWidth="129.0">
+               <children>
+                  <Label prefHeight="20.0" prefWidth="100.0" text="Add new book.">
+                     <font>
+                        <Font name="Arial Bold" size="11.0" />
+                     </font></Label>
+                  <JFXButton fx:id="addNewBookButt" onAction="#addNewBook" prefHeight="40.0" prefWidth="100.0" text="Add">
+                     <VBox.margin>
+                        <Insets left="30.0" top="5.0" />
+                     </VBox.margin>
+                  </JFXButton>
+               </children>
+               <VBox.margin>
+                  <Insets bottom="10.0" />
+               </VBox.margin>
+            </VBox>
+            <VBox alignment="CENTER" prefHeight="90.0" prefWidth="129.0">
+               <children>
+                  <Label prefHeight="20.0" prefWidth="100.0" text="Edit data book.">
+                     <font>
+                        <Font name="Arial Bold" size="11.0" />
+                     </font></Label>
+                  <JFXButton fx:id="editBookButt" onAction="#editBook" prefHeight="40.0" prefWidth="100.0" text="Edit">
+                     <VBox.margin>
+                        <Insets left="30.0" top="5.0" />
+                     </VBox.margin>
+                  </JFXButton>
+               </children>
+               <VBox.margin>
+                  <Insets bottom="10.0" />
+               </VBox.margin>
+            </VBox>
+            <VBox alignment="CENTER" prefHeight="90.0" prefWidth="129.0">
+               <children>
+                  <Label prefHeight="20.0" prefWidth="100.0" text="Delete book.">
+                     <font>
+                        <Font name="Arial Bold" size="11.0" />
+                     </font></Label>
+                  <JFXButton fx:id="deleteBookButt" onAction="#deleteBook" prefHeight="40.0" prefWidth="100.0" text="Delete">
+                     <VBox.margin>
+                        <Insets left="30.0" top="5.0" />
+                     </VBox.margin>
+                  </JFXButton>
+               </children>
+               <VBox.margin>
+                  <Insets bottom="10.0" />
+               </VBox.margin>
+            </VBox>
+            <VBox alignment="CENTER" prefHeight="90.0" prefWidth="129.0">
+               <children>
+                  <Label prefHeight="20.0" prefWidth="100.0" text="More detail search.">
+                     <font>
+                        <Font name="Arial Bold" size="11.0" />
+                     </font></Label>
+                  <JFXButton fx:id="moreDetailSearchButt" onAction="#moreDetailSearch" prefHeight="40.0" prefWidth="100.0" text="Search">
+                     <VBox.margin>
+                        <Insets left="30.0" top="5.0" />
+                     </VBox.margin>
+                  </JFXButton>
+               </children>
+               <VBox.margin>
+                  <Insets bottom="10.0" />
+               </VBox.margin>
+            </VBox>
+         </children>
+      </VBox>
+      <JFXTreeTableView fx:id="bookTable" layoutX="1.0" layoutY="110.0" prefHeight="550.0" prefWidth="721.0" AnchorPane.bottomAnchor="0.0" AnchorPane.leftAnchor="1.0" AnchorPane.rightAnchor="129.0" AnchorPane.topAnchor="110.0">
+         <columns>
+            <TreeTableColumn fx:id="idBook" prefWidth="103.0" text="1" />
+            <TreeTableColumn fx:id="isbn" prefWidth="103.0" text="2" />
+            <TreeTableColumn fx:id="tittle" prefWidth="103.0" text="3" />
+            <TreeTableColumn fx:id="autor" prefWidth="103.0" text="4" />
+            <TreeTableColumn fx:id="publicationYear" prefWidth="103.0" text="5" />
+            <TreeTableColumn fx:id="type" prefWidth="103.0" text="6" />
+            <TreeTableColumn fx:id="localization" prefWidth="103.0" text="7" />
+         </columns>
+      </JFXTreeTableView>
+   </children>
+</AnchorPane>
