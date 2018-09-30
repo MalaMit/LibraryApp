@@ -1,8 +1,0 @@
-AnchorPane{
-	-fx-background-color: #F0F3BD;
-}
-
-#amountBookBox, #copyBookBox, #accountBox, #lendBookBox, #holdoverBox{
-	-fx-background-radius: 50;
-	-fx-background-color: #FFFFFF;
-}
