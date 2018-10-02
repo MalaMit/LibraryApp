@@ -7,11 +7,11 @@ public class DataValidation {
     public static boolean textAlphabetWithPolishMarks(String inputTextField, int minimumLength, int requiredLength) {
         boolean isCorrect = true;
 
-        if (!inputTextField.matches("[a-zA-ZąęćżźńłóśĄĆĘŁŃÓŚŹŻ]{"+ minimumLength +","+ requiredLength +"}")) {
+        if (!inputTextField.matches("[a-zA-ZąęćżźńłóśĄĆĘŁŃÓŚŹŻ ]{"+ minimumLength +","+ requiredLength +"}")) {
         	isCorrect = false;
         }
 
-        System.out.println(inputTextField.matches("[a-zA-ZąęćżźńłóśĄĆĘŁŃÓŚŹŻ]{"+ minimumLength +","+ requiredLength +"}") +" "+ "textAlphabetWithPolishMarks" );
+        System.out.println(inputTextField.matches("[a-zA-ZąęćżźńłóśĄĆĘŁŃÓŚŹŻ ]{"+ minimumLength +","+ requiredLength +"}") +" "+ "textAlphabetWithPolishMarks" );
         return isCorrect;
 
     }
