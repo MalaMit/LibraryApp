@@ -1,0 +1,40 @@
+AnchorPane{
+	-fx-border-color: black;
+}
+
+#iconView {
+	-fx-background-image: url('/image/fajka.png');
+	-fx-background-size: 100% 100%;
+	-fx-background-position: center;
+	-fx-background-repeat: no-repeat;
+}
+
+#head{
+	-fx-background-color: #009ab0;
+	-fx-opacity: 0.9;
+}
+
+#closeHead{
+	-fx-background-color: transparent;
+}
+
+#closeHead:hover{
+	-fx-background-color: #ff0000;
+}
+
+#okButtton{
+	-fx-background-color: #128a08;
+	-fx-background-radius: 15;
+	-fx-font-family: "Arial";
+	-fx-font-size: 18px;
+}
+
+#okButtton:hover{
+	-fx-background-color: #9494b8;
+}
+
+#textError{
+	-fx-border-color: black;
+	-fx-text-fill: #000000;
+	-fx-border-radius: 10;
+}

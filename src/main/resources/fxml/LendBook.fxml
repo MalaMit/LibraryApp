@@ -8,7 +8,7 @@
 <?import javafx.scene.layout.AnchorPane?>
 <?import javafx.scene.text.Font?>
 
-<AnchorPane fx:id="mainAnchorPane" maxHeight="-Infinity" maxWidth="-Infinity" minHeight="-Infinity" minWidth="-Infinity" prefHeight="660.0" prefWidth="850.0" xmlns="http://javafx.com/javafx/9.0.1" xmlns:fx="http://javafx.com/fxml/1" fx:controller="controller.LendBookController">
+<AnchorPane fx:id="mainAnchorPane" maxHeight="-Infinity" maxWidth="-Infinity" minHeight="-Infinity" minWidth="-Infinity" prefHeight="660.0" prefWidth="850.0" xmlns="http://javafx.com/javafx/10.0.1" xmlns:fx="http://javafx.com/fxml/1" fx:controller="controller.LendBookController">
    <children>
       <AnchorPane fx:id="dataAnchorPane" prefHeight="450.0" prefWidth="850.0">
          <children>
@@ -27,12 +27,12 @@
                <padding>
                   <Insets left="40.0" />
                </padding></JFXDatePicker>
-            <Label fx:id="idBookLabel" alignment="CENTER" layoutX="62.0" layoutY="127.0" prefHeight="40.0" prefWidth="350.0" text="Identification number the book:">
+            <Label fx:id="idBookLabel" alignment="CENTER" layoutX="62.0" layoutY="127.0" prefHeight="40.0" prefWidth="350.0" text="Book identification number:">
                <font>
                   <Font name="Arial" size="20.0" />
                </font>
             </Label>
-            <Label fx:id="idReaderLabel" alignment="CENTER" layoutX="62.0" layoutY="197.0" prefHeight="40.0" prefWidth="350.0" text="Identification number the reader:">
+            <Label fx:id="idReaderLabel" alignment="CENTER" layoutX="62.0" layoutY="197.0" prefHeight="40.0" prefWidth="350.0" text="Reader identification number:">
                <font>
                   <Font name="Arial" size="20.0" />
                </font>

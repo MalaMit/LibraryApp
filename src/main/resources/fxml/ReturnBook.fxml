@@ -10,7 +10,7 @@
 <?import javafx.scene.text.Font?>
 <?import javafx.scene.text.Text?>
 
-<AnchorPane fx:id="mainAnchorPane" maxHeight="-Infinity" maxWidth="-Infinity" minHeight="-Infinity" minWidth="-Infinity" prefHeight="660.0" prefWidth="850.0" xmlns="http://javafx.com/javafx/9.0.1" xmlns:fx="http://javafx.com/fxml/1" fx:controller="controller.ReturnBookController">
+<AnchorPane fx:id="mainAnchorPane" maxHeight="-Infinity" maxWidth="-Infinity" minHeight="-Infinity" minWidth="-Infinity" prefHeight="660.0" prefWidth="850.0" xmlns="http://javafx.com/javafx/10.0.1" xmlns:fx="http://javafx.com/fxml/1" fx:controller="controller.ReturnBookController">
    <children>
       <AnchorPane fx:id="topSection" prefHeight="100.0" prefWidth="850.0" AnchorPane.topAnchor="0.0">
          <children>
@@ -18,7 +18,7 @@
                <children>
                   <VBox alignment="CENTER" prefHeight="200.0" prefWidth="300.0">
                      <children>
-                        <Text strokeType="OUTSIDE" strokeWidth="0.0" text="Identification number of the book:" wrappingWidth="281.8017578125">
+                        <Text strokeType="OUTSIDE" strokeWidth="0.0" text="Book identification number:" wrappingWidth="281.8017578125">
                            <VBox.margin>
                               <Insets bottom="10.0" />
                            </VBox.margin>
@@ -52,12 +52,12 @@
                <children>
                   <HBox alignment="CENTER" prefHeight="80.0" prefWidth="200.0">
                      <children>
-                        <Label alignment="CENTER" contentDisplay="CENTER" prefHeight="40.0" prefWidth="280.0" text="The book borrow date:" />
+                        <Label alignment="CENTER" contentDisplay="CENTER" prefHeight="40.0" prefWidth="280.0" text="Lend date:" />
                      </children>
                   </HBox>
                   <HBox alignment="CENTER" prefHeight="80.0" prefWidth="200.0">
                      <children>
-                        <Label alignment="CENTER" contentDisplay="CENTER" prefHeight="40.0" prefWidth="280.0" text="When should the book be return:" />
+                        <Label alignment="CENTER" contentDisplay="CENTER" prefHeight="40.0" prefWidth="280.0" text="When should be return:" />
                      </children>
                   </HBox>
                   <HBox alignment="CENTER" prefHeight="80.0" prefWidth="200.0">

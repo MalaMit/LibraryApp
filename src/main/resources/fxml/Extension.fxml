@@ -10,13 +10,13 @@
 <?import javafx.scene.layout.VBox?>
 <?import javafx.scene.text.Font?>
 
-<AnchorPane fx:id="mainPane" maxHeight="-Infinity" maxWidth="-Infinity" minHeight="-Infinity" minWidth="-Infinity" prefHeight="660.0" prefWidth="850.0" xmlns="http://javafx.com/javafx/9.0.1" xmlns:fx="http://javafx.com/fxml/1" fx:controller="controller.ExtensionController">
+<AnchorPane fx:id="mainPane" maxHeight="-Infinity" maxWidth="-Infinity" minHeight="-Infinity" minWidth="-Infinity" prefHeight="660.0" prefWidth="850.0" xmlns="http://javafx.com/javafx/10.0.1" xmlns:fx="http://javafx.com/fxml/1" fx:controller="controller.ExtensionController">
    <children>
       <HBox fx:id="topBox" alignment="CENTER" layoutY="-3.0" prefHeight="140.0" prefWidth="850.0" AnchorPane.leftAnchor="0.0" AnchorPane.rightAnchor="0.0" AnchorPane.topAnchor="0.0">
          <children>
             <VBox alignment="CENTER" prefHeight="140.0" prefWidth="283.0">
                <children>
-                  <Label prefHeight="20.0" prefWidth="220.0" text="Identification number of reader:">
+                  <Label prefHeight="20.0" prefWidth="220.0" text="Reader identification number:">
                      <VBox.margin>
                         <Insets bottom="10.0" />
                      </VBox.margin>
@@ -33,7 +33,7 @@
             </VBox>
             <VBox alignment="CENTER" prefHeight="140.0" prefWidth="283.0">
                <children>
-                  <Label prefHeight="20.0" prefWidth="220.0" text="Identification number of book">
+                  <Label prefHeight="20.0" prefWidth="220.0" text="Book identification number:">
                      <VBox.margin>
                         <Insets bottom="10.0" />
                      </VBox.margin>
@@ -65,12 +65,12 @@
          <children>
             <VBox alignment="CENTER" prefHeight="200.0" prefWidth="425.0">
                <children>
-                  <Label fx:id="dateBorrowText" alignment="CENTER" prefHeight="50.0" prefWidth="300.0" text="The book borrow date:" textAlignment="CENTER">
+                  <Label fx:id="dateBorrowText" alignment="CENTER" prefHeight="50.0" prefWidth="300.0" text="Borrow date:" textAlignment="CENTER">
                      <VBox.margin>
                         <Insets bottom="100.0" />
                      </VBox.margin>
                   </Label>
-                  <Label fx:id="dateRetrunText" alignment="CENTER" prefHeight="50.0" prefWidth="300.0" text="When should the book be return:" textAlignment="CENTER" />
+                  <Label fx:id="dateRetrunText" alignment="CENTER" prefHeight="50.0" prefWidth="300.0" text="When should be return:" textAlignment="CENTER" />
                </children>
             </VBox>
             <VBox alignment="CENTER" prefHeight="200.0" prefWidth="425.0">

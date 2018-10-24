@@ -6,12 +6,12 @@
 
 			<!-- JDBC Database connection settings -->
 			<property name="connection.driver_class">com.mysql.jdbc.Driver</property>
-			<property name="connection.url">jdbc:mysql://localhost:3306/library?useSSL=false</property>
+			<property name="connection.url">jdbc:mysql://localhost:3306/library?useSSL=false&amp;characterEncoding=UTF-8</property>
 			<property name="connection.username">root</property>
-			<property name="connection.password">1234</property>
+			<property name="connection.password">123</property>
 
 			<!-- JDBC connection pool settings -->
-			<property name="connection.pool_size">20</property>
+			<property name="connection.pool_size">1</property>
 
 			<!-- Select our SQL dialect -->
 			<property name="dialect">org.hibernate.dialect.MySQL5InnoDBDialect</property>
@@ -31,7 +31,7 @@
 			<mapping class="entities.Book" />
 			<mapping class="entities.Reader" />
 			<mapping class="entities.Catalogue" />
-			<mapping class="entities.BorrowedBook" />
+			<mapping class="entities.LendBook" />
 			
 			
 		</session-factory>
