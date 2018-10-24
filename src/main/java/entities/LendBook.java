@@ -15,13 +15,13 @@ import javax.persistence.Temporal;
 import javax.persistence.TemporalType;
 
 @Entity
-@Table(name = "Borrowed_Book")
-public class BorrowedBook {
+@Table(name = "LendBook")
+public class LendBook {
 
 	@Id
 	@GeneratedValue(strategy = GenerationType.IDENTITY)
-	@Column(name = "borrowed_Book_ID", columnDefinition = "bigint(20)", nullable = false)
-	private long borrowed_book_ID;
+	@Column(name = "lend_Book_ID", columnDefinition = "bigint(20)", nullable = false)
+	private long lend_book_ID;
 
 	@ManyToOne
 	@JoinColumn(name = "book_ID", foreignKey = @ForeignKey(name = "book_ID_FK"), nullable = false)
@@ -32,35 +32,35 @@ public class BorrowedBook {
 	private Reader reader;
 
 	@Temporal(TemporalType.DATE)
-	private Date borrowed_Date;
+	private Date lend_Date;
 	
 	@Temporal(TemporalType.DATE)
 	private Date return_Date;
 
-	public BorrowedBook() {
+	public LendBook() {
 	}
 
-	public BorrowedBook(long borrowed_book_ID, Catalogue catalogue, Reader reader, Date borrowed_Date,
+	public LendBook(long lend_book_ID, Catalogue catalogue, Reader reader, Date lend_Date,
 			Date return_Date) {
-		this.borrowed_book_ID = borrowed_book_ID;
+		this.lend_book_ID = lend_book_ID;
 		this.catalogue = catalogue;
 		this.reader = reader;
-		this.borrowed_Date = borrowed_Date;
+		this.lend_Date = lend_Date;
 		this.return_Date = return_Date;
 	}
 
 	/**
 	 * @return the borrowed_book_ID
 	 */
-	public long getBorrowed_book_ID() {
-		return borrowed_book_ID;
+	public long getLend_book_ID() {
+		return lend_book_ID;
 	}
 
 	/**
 	 * @param borrowed_book_ID the borrowed_book_ID to set
 	 */
-	public void setBorrowed_book_ID(long borrowed_book_ID) {
-		this.borrowed_book_ID = borrowed_book_ID;
+	public void setLend_book_ID(long lend_book_ID) {
+		this.lend_book_ID = lend_book_ID;
 	}
 
 	/**
@@ -95,14 +95,14 @@ public class BorrowedBook {
 	 * @return the borrowed_Date
 	 */
 	public Date getBorrowed_Date() {
-		return borrowed_Date;
+		return lend_Date;
 	}
 
 	/**
 	 * @param borrowed_Date the borrowed_Date to set
 	 */
-	public void setBorrowed_Date(Date borrowed_Date) {
-		this.borrowed_Date = borrowed_Date;
+	public void setBorrowed_Date(Date lend_Date) {
+		this.lend_Date = lend_Date;
 	}
 
 	/**
