@@ -12,7 +12,7 @@ import javafx.stage.StageStyle;
 
 public class AlertMaker {
 
-	public void showSimpleAlert(String content) {
+	public void showSimpleAlert(String content, String cssPath) {
 		Parent parent = null;
 		try {
 			FXMLLoader loader = new FXMLLoader();
@@ -22,7 +22,7 @@ public class AlertMaker {
 			errorMassController.setTextError(content);
 
 			Scene scene = new Scene(parent);
-			scene.getStylesheets().add(getClass().getResource("/css/errorMessage.css").toExternalForm());
+			scene.getStylesheets().add(getClass().getResource("/css/"+ cssPath +"").toExternalForm());
 			
 			Stage window = new Stage();
 
