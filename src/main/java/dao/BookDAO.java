@@ -29,13 +29,22 @@ public class BookDAO {
 		HibernateUtil.closeSessionWithTransaction();
 	}
 	
-	public void createBook(Book book) {
+	public boolean createBook(Book book) {
 
 		HibernateUtil.openSessionWithTransaction();
 
-		HibernateUtil.getCurrentSession().save(book);
+		Query query = HibernateUtil.getCurrentSession()
+				.createQuery("select book.title from Book book where book.isbn = :isbn")
+				.setParameter("isbn", book.getIsbn());
 
+		if (query.uniqueResult() == null) {
+			HibernateUtil.getCurrentSession().save(book);
+			HibernateUtil.closeSessionWithTransaction();
+			return true;
+		}
 		HibernateUtil.closeSessionWithTransaction();
+
+		return false;
 	}
 	
 	public void updateBook(Book book) {
