@@ -104,7 +104,7 @@ public class LoginController implements Initializable {
 					e.printStackTrace();
 				}
 			} else {
-				alertMaker.showSimpleAlert("Username or password is no correct. Please try again!");
+				alertMaker.showSimpleAlert("Username or password is no correct. Please try again!", "errorMessage.css");
 			}
 		} else {
 			

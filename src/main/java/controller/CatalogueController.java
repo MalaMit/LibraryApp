@@ -201,7 +201,7 @@ public class CatalogueController implements Initializable {
 	
     @FXML
     void bookLocalization(ActionEvent event) {
-
+    	System.out.println(bookTable.getSelectionModel().getSelectedItem().getAutor());
     }
 
 }

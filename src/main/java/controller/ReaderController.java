@@ -51,6 +51,9 @@ public class ReaderController implements Initializable {
 	@FXML
 	private JFXButton deleteReaderButt;
 
+    @FXML
+    private JFXButton userHistoryButton;
+
 	@FXML
 	private TableView<Reader> tableReader;
 
@@ -199,5 +202,10 @@ public class ReaderController implements Initializable {
 			tableReader.setItems(readers);
 		}
 	}
+	
+    @FXML
+    void showUserHistory(ActionEvent event) {
+
+    }
 
 }

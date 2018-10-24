@@ -50,6 +50,8 @@ public class CreateNewReaderController implements Initializable {
     	boolean pesel = DataValidation.textNumber(peselField.getText(), 10, 20);
     	boolean phoneNumber = DataValidation.textPhone(phoneField.getText());
 
+    	System.out.println(surnameField.getText() + " " + nameField.getText() );
+    	
     	if(name && surname && address && pesel && phoneNumber) {
 			reader.setName(nameField.getText());
 			reader.setSurname(surnameField.getText());
