@@ -48,8 +48,9 @@ public class AddNewBookController implements Initializable {
     	book.setPublication_year(Integer.valueOf(pYearField.getText()));
     	book.setType(typeField.getText());
     	
-    	bookDAO.createBook(book);
-    	mainStackPCreate.getScene().getWindow().hide();
+    	if(bookDAO.createBook(book) == true) {
+    		mainStackPCreate.getScene().getWindow().hide();
+    	}
     }
 	
 	@Override
