@@ -94,14 +94,14 @@ public class LendBook {
 	/**
 	 * @return the borrowed_Date
 	 */
-	public Date getBorrowed_Date() {
+	public Date getLend_Date() {
 		return lend_Date;
 	}
 
 	/**
 	 * @param borrowed_Date the borrowed_Date to set
 	 */
-	public void setBorrowed_Date(Date lend_Date) {
+	public void setLend_Date(Date lend_Date) {
 		this.lend_Date = lend_Date;
 	}
 

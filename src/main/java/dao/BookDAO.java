@@ -63,8 +63,7 @@ public class BookDAO {
 
 		switch (variant) {
 		case "0":
-			query = HibernateUtil.getCurrentSession()
-					.createQuery("select book from Book book where book.isbn = :isbn")
+			query = HibernateUtil.getCurrentSession().createQuery("select book from Book book where book.isbn = :isbn")
 					.setParameter("isbn", Long.valueOf(parameter));
 			break;
 
@@ -79,10 +78,9 @@ public class BookDAO {
 					.createQuery("select book from Book book where book.title = :title")
 					.setParameter("title", parameter);
 			break;
-			
+
 		case "3":
-			query = HibernateUtil.getCurrentSession()
-					.createQuery("select book from Book book where book.type = :type")
+			query = HibernateUtil.getCurrentSession().createQuery("select book from Book book where book.type = :type")
 					.setParameter("type", parameter);
 			break;
 

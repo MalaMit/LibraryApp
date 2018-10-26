@@ -73,18 +73,21 @@ public class LendBookController implements Initializable {
 					datePicker.setValue(LocalDate.now());
 
 				} else {
-					alertMaker.showSimpleAlert("Book ID or Reader ID is no correct. Please try again!",
+					alertMaker.showSimpleAlert("Book or Reader is no correct.\nPlease try again!",
 							"errorMessage.css");
 				}
+			}else {
+				alertMaker.showSimpleAlert("Book or Reader is no correct.\nPlease try again!",
+						"errorMessage.css");
 			}
 		} else {
-			String message = "Please enter:\n";
+			String message = "Please enter field:\n";
 
 			if (idReader.getText().isEmpty()) {
-				message = message + "Reader ID ";
+				message = message + "Reader ";
 			}
 			if (idBook.getText().isEmpty()) {
-				message = message + " Book ID ";
+				message = message + " Book ";
 			}
 			if (datePicker.getValue().equals(LocalDate.now())) {
 				message = message + " Date";

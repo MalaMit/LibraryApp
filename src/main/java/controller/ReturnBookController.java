@@ -1,11 +1,17 @@
 package controller;
 
 import java.net.URL;
+import java.time.LocalDate;
+import java.util.Date;
 import java.util.ResourceBundle;
 
 import com.jfoenix.controls.JFXButton;
 import com.jfoenix.controls.JFXTextField;
 
+import dao.ReturnAndExtensionDAO;
+import dataValidation.AlertMaker;
+import dataValidation.DataValidation;
+import entities.LendBook;
 import javafx.event.ActionEvent;
 import javafx.fxml.FXML;
 import javafx.fxml.Initializable;
@@ -33,7 +39,7 @@ public class ReturnBookController implements Initializable{
 	    private AnchorPane dataViewSection;
 
 	    @FXML
-	    private Label borrowDateLabel;
+	    private Label lendDateLabel;
 
 	    @FXML
 	    private Label bookBeReturnLabel;
@@ -43,6 +49,10 @@ public class ReturnBookController implements Initializable{
 
 	    @FXML
 	    private Label payLabel;
+	    
+	    private LendBook lendB = null;
+	    private AlertMaker alertMaker = new AlertMaker();
+	    private ReturnAndExtensionDAO retAndExtenDAO = new ReturnAndExtensionDAO();
 
     @FXML
     void applyReturn(ActionEvent event) {
@@ -51,6 +61,25 @@ public class ReturnBookController implements Initializable{
 
     @FXML
     void searchReaderID(ActionEvent event) {
+		boolean readerIDCheck = DataValidation.textNumber(idReader.getText(), 1, 20);
+
+		if (!idReader.getText().isEmpty() && readerIDCheck)
+			lendB = retAndExtenDAO.extensionBook(Long.valueOf(idReader.getText()));
+
+		if (lendB != null) {
+			lendDateLabel.setText(String.valueOf(lendB.getLend_Date()));
+			bookBeReturnLabel.setText(String.valueOf(lendB.getReturn_Date()));
+			
+			long amountDays = daysBetween(java.sql.Date.valueOf(LocalDate.now()), lendB.getReturn_Date());
+			
+			if(amountDays > 0) {
+				timeOutLabel.setText(amountDays + " days");
+				payLabel.setText(amountDays * 0.50 + " zł");
+			}else
+				timeOutLabel.setText("0 days");
+		} else {
+			alertMaker.showSimpleAlert("Book is wrong!!!", "errorMessage.css");
+		}
 
     }
 
@@ -63,5 +92,11 @@ public class ReturnBookController implements Initializable{
 		});
 		
 	}
+	
+	 public static long daysBetween(Date startDate, Date endDate) {
+		 long diff = startDate.getTime() - endDate.getTime();
+	 
+	        return (diff / (1000 * 60 * 60 * 24));
+	    }
 
 }
