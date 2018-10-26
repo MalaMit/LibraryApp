@@ -11,7 +11,7 @@
 			<property name="connection.password">123</property>
 
 			<!-- JDBC connection pool settings -->
-			<property name="connection.pool_size">1</property>
+			<property name="connection.pool_size">10</property>
 
 			<!-- Select our SQL dialect -->
 			<property name="dialect">org.hibernate.dialect.MySQL5InnoDBDialect</property>

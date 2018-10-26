@@ -14,26 +14,9 @@
    <children>
       <HBox fx:id="topBox" alignment="CENTER" layoutY="-3.0" prefHeight="140.0" prefWidth="850.0" AnchorPane.leftAnchor="0.0" AnchorPane.rightAnchor="0.0" AnchorPane.topAnchor="0.0">
          <children>
-            <VBox alignment="CENTER" prefHeight="140.0" prefWidth="283.0">
+            <VBox alignment="CENTER" prefHeight="140.0" prefWidth="353.0">
                <children>
-                  <Label prefHeight="20.0" prefWidth="220.0" text="Reader identification number:">
-                     <VBox.margin>
-                        <Insets bottom="10.0" />
-                     </VBox.margin>
-                     <font>
-                        <Font name="Arial Bold" size="14.0" />
-                     </font>
-                  </Label>
-                  <JFXTextField fx:id="bookID" alignment="CENTER" prefHeight="50.0">
-                     <VBox.margin>
-                        <Insets left="20.0" />
-                     </VBox.margin>
-                  </JFXTextField>
-               </children>
-            </VBox>
-            <VBox alignment="CENTER" prefHeight="140.0" prefWidth="283.0">
-               <children>
-                  <Label prefHeight="20.0" prefWidth="220.0" text="Book identification number:">
+                  <Label prefHeight="20.0" prefWidth="321.0" text="Book identification number:">
                      <VBox.margin>
                         <Insets bottom="10.0" />
                      </VBox.margin>
@@ -65,25 +48,44 @@
          <children>
             <VBox alignment="CENTER" prefHeight="200.0" prefWidth="425.0">
                <children>
-                  <Label fx:id="dateBorrowText" alignment="CENTER" prefHeight="50.0" prefWidth="300.0" text="Borrow date:" textAlignment="CENTER">
+                  <Label fx:id="textField1" alignment="CENTER" prefHeight="50.0" prefWidth="300.0" text="Reader identification number:" textAlignment="CENTER">
                      <VBox.margin>
-                        <Insets bottom="100.0" />
+                        <Insets bottom="50.0" top="30.0" />
                      </VBox.margin>
                   </Label>
-                  <Label fx:id="dateRetrunText" alignment="CENTER" prefHeight="50.0" prefWidth="300.0" text="When should be return:" textAlignment="CENTER" />
+                  <Label fx:id="textField2" alignment="CENTER" prefHeight="50.0" prefWidth="300.0" text="Lend date:" textAlignment="CENTER">
+                     <VBox.margin>
+                        <Insets bottom="50.0" />
+                     </VBox.margin>
+                  </Label>
+                  <Label fx:id="textField3" alignment="CENTER" prefHeight="50.0" prefWidth="300.0" text="When should be return:" textAlignment="CENTER">
+                     <VBox.margin>
+                        <Insets bottom="50.0" />
+                     </VBox.margin></Label>
                </children>
             </VBox>
             <VBox alignment="CENTER" prefHeight="200.0" prefWidth="425.0">
                <children>
-                  <Label fx:id="dataLendShow" alignment="CENTER" prefHeight="50.0" prefWidth="300.0" textAlignment="CENTER">
+                  <Label fx:id="readerIDLabel" alignment="CENTER" prefHeight="50.0" prefWidth="300.0" textAlignment="CENTER">
                      <VBox.margin>
-                        <Insets bottom="100.0" />
+                        <Insets bottom="50.0" top="30.0" />
                      </VBox.margin>
                   </Label>
-                  <Label fx:id="dateRetrunShow" alignment="CENTER" prefHeight="50.0" prefWidth="300.0" textAlignment="CENTER" />
+                  <Label fx:id="dataLendShow" alignment="CENTER" prefHeight="50.0" prefWidth="300.0" textAlignment="CENTER">
+                     <VBox.margin>
+                        <Insets bottom="50.0" />
+                     </VBox.margin>
+                  </Label>
+                  <Label fx:id="dateRetrunShow" alignment="CENTER" prefHeight="50.0" prefWidth="300.0" textAlignment="CENTER">
+                     <VBox.margin>
+                        <Insets bottom="50.0" />
+                     </VBox.margin></Label>
                </children>
             </VBox>
          </children>
+         <padding>
+            <Insets top="30.0" />
+         </padding>
       </HBox>
       <HBox fx:id="downBox" alignment="CENTER" layoutY="437.0" prefHeight="140.0" prefWidth="850.0" AnchorPane.bottomAnchor="0.0" AnchorPane.leftAnchor="0.0" AnchorPane.rightAnchor="0.0">
          <children>
@@ -94,7 +96,7 @@
             </VBox>
             <VBox alignment="CENTER" prefHeight="225.0" prefWidth="283.0">
                <children>
-                  <JFXDatePicker fx:id="dataPicker" editable="false" prefHeight="50.0" prefWidth="200.0">
+                  <JFXDatePicker fx:id="datePicker" editable="false" prefHeight="50.0" prefWidth="200.0">
                      <padding>
                         <Insets left="50.0" />
                      </padding>

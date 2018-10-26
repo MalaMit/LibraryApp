@@ -76,7 +76,7 @@
                <children>
                   <HBox alignment="CENTER" prefHeight="80.0" prefWidth="200.0">
                      <children>
-                        <Label fx:id="borrowDateLabel" alignment="CENTER" contentDisplay="CENTER" prefHeight="40.0" prefWidth="280.0" />
+                        <Label fx:id="lendDateLabel" alignment="CENTER" contentDisplay="CENTER" prefHeight="40.0" prefWidth="280.0" />
                      </children>
                   </HBox>
                   <HBox alignment="CENTER" prefHeight="80.0" prefWidth="200.0">
