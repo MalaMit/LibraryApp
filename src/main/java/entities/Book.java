@@ -29,14 +29,6 @@ public class Book {
 		
 	}
 
-	public Book(long isbn, String title, String autor, int publication_year, String type) {
-		this.isbn = isbn;
-		this.title = title;
-		this.autor = autor;
-		this.publication_year = publication_year;
-		this.type = type;
-	}
-
 	/**
 	 * @return the isbn
 	 */

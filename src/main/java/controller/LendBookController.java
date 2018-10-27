@@ -12,6 +12,7 @@ import dao.LendBookDAO;
 import dao.ReaderDAO;
 import dataValidation.AlertMaker;
 import dataValidation.DataValidation;
+import entities.Reader;
 import javafx.event.ActionEvent;
 import javafx.fxml.FXML;
 import javafx.fxml.Initializable;

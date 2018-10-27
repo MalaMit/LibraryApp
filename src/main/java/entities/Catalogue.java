@@ -29,12 +29,6 @@ public class Catalogue {
 	public Catalogue() {
 	}
 
-	public Catalogue(long book_ID, String localization, Book book) {
-		this.book_ID = book_ID;
-		this.localization = localization;
-		this.book = book;
-	}
-
 	/**
 	 * @return the book_ID
 	 */

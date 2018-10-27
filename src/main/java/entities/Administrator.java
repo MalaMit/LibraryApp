@@ -32,13 +32,6 @@ public class Administrator {
 		
 	}
 
-	public Administrator(String name, String surname, String login, String password) {
-		this.name = name;
-		this.surname = surname;
-		this.login = login;
-		this.password = password;
-	}
-
 	/**
 	 * @return the adminID
 	 */

@@ -1,11 +1,20 @@
 package entities;
 
+import java.util.ArrayList;
+import java.util.List;
+
+import javax.persistence.CascadeType;
 import javax.persistence.Column;
 import javax.persistence.Entity;
+import javax.persistence.FetchType;
+import javax.persistence.ForeignKey;
 import javax.persistence.GeneratedValue;
 import javax.persistence.GenerationType;
 import javax.persistence.Id;
+import javax.persistence.JoinColumn;
+import javax.persistence.OneToMany;
 import javax.persistence.Table;
+
 
 @Entity
 @Table(name = "reader")
@@ -30,18 +39,12 @@ public class Reader {
 	
 	@Column(name = "phone_number", columnDefinition = "VARCHAR(15)" ,nullable = false)
 	private String phone_number;
+	
+	@OneToMany(fetch = FetchType.EAGER, cascade = CascadeType.ALL, mappedBy="reader")
+	List<ReaderHistory> readerHistory = new ArrayList<>();
 
 	public Reader() {
 	
-	}
-
-	public Reader(long reader_ID, String name, String surname, long pesel, String address, String phone_number) {
-		this.reader_ID = reader_ID;
-		this.name = name;
-		this.surname = surname;
-		this.pesel = pesel;
-		this.address = address;
-		this.phone_number = phone_number;
 	}
 
 	/**
@@ -126,6 +129,20 @@ public class Reader {
 	 */
 	public void setPhone_number(String phone_number) {
 		this.phone_number = phone_number;
+	}
+
+	/**
+	 * @return the historyReader
+	 */
+	public List<ReaderHistory> getHistoryReader() {
+		return readerHistory;
+	}
+
+	/**
+	 * @param historyReader the historyReader to set
+	 */
+	public void setHistoryReader(List<ReaderHistory> readerHistory) {
+		this.readerHistory = readerHistory;
 	}
 	
 }

@@ -14,7 +14,7 @@
 			<property name="connection.pool_size">10</property>
 
 			<!-- Select our SQL dialect -->
-			<property name="dialect">org.hibernate.dialect.MySQL5InnoDBDialect</property>
+			<property name="dialect">org.hibernate.dialect.MySQL5Dialect</property>
 
 			<!-- Echo the SQL to stdout -->
 			<property name="show_sql">true</property>
@@ -32,6 +32,7 @@
 			<mapping class="entities.Reader" />
 			<mapping class="entities.Catalogue" />
 			<mapping class="entities.LendBook" />
+			<mapping class="entities.ReaderHistory" />
 			
 			
 		</session-factory>

@@ -40,15 +40,6 @@ public class LendBook {
 	public LendBook() {
 	}
 
-	public LendBook(long lend_book_ID, Catalogue catalogue, Reader reader, Date lend_Date,
-			Date return_Date) {
-		this.lend_book_ID = lend_book_ID;
-		this.catalogue = catalogue;
-		this.reader = reader;
-		this.lend_Date = lend_Date;
-		this.return_Date = return_Date;
-	}
-
 	/**
 	 * @return the borrowed_book_ID
 	 */
