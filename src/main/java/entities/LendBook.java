@@ -24,11 +24,11 @@ public class LendBook {
 	private long lend_book_ID;
 
 	@ManyToOne
-	@JoinColumn(name = "book_ID", foreignKey = @ForeignKey(name = "book_ID_FK"), nullable = false)
+	@JoinColumn(name = "book_ID", foreignKey = @ForeignKey(name = "Catalogue_FK"), nullable = false)
 	private Catalogue catalogue;
 
 	@ManyToOne
-	@JoinColumn(name = "reader_ID", foreignKey = @ForeignKey(name = "reader_ID_FK"), nullable = false)
+	@JoinColumn(name = "reader_ID", foreignKey = @ForeignKey(name = "Reader_ID_FK"), nullable = false)
 	private Reader reader;
 
 	@Temporal(TemporalType.DATE)

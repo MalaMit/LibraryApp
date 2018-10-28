@@ -26,7 +26,7 @@
                               <Font name="Arial Bold" size="14.0" />
                            </font>
                         </Text>
-                        <JFXTextField fx:id="idReader" alignment="CENTER" focusColor="WHITE" prefHeight="40.0" prefWidth="280.0" unFocusColor="WHITE">
+                        <JFXTextField fx:id="bookID" alignment="CENTER" focusColor="WHITE" prefHeight="40.0" prefWidth="280.0" unFocusColor="WHITE">
                            <VBox.margin>
                               <Insets right="20.0" />
                            </VBox.margin>
@@ -52,6 +52,11 @@
                <children>
                   <HBox alignment="CENTER" prefHeight="80.0" prefWidth="200.0">
                      <children>
+                        <Label alignment="CENTER" contentDisplay="CENTER" prefHeight="40.0" prefWidth="280.0" text="Reader identification number:" />
+                     </children>
+                  </HBox>
+                  <HBox alignment="CENTER" prefHeight="80.0" prefWidth="200.0">
+                     <children>
                         <Label alignment="CENTER" contentDisplay="CENTER" prefHeight="40.0" prefWidth="280.0" text="Lend date:" />
                      </children>
                   </HBox>
@@ -74,6 +79,11 @@
             </VBox>
             <VBox layoutX="429.0" layoutY="14.0" prefHeight="480.0" prefWidth="350.0">
                <children>
+                  <HBox alignment="CENTER" prefHeight="80.0" prefWidth="200.0">
+                     <children>
+                        <Label fx:id="readerIDLabel" alignment="CENTER" contentDisplay="CENTER" prefHeight="40.0" prefWidth="280.0" />
+                     </children>
+                  </HBox>
                   <HBox alignment="CENTER" prefHeight="80.0" prefWidth="200.0">
                      <children>
                         <Label fx:id="lendDateLabel" alignment="CENTER" contentDisplay="CENTER" prefHeight="40.0" prefWidth="280.0" />

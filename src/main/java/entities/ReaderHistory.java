@@ -28,7 +28,7 @@ public class ReaderHistory {
 	private Reader reader;
 
 	@ManyToOne
-	@JoinColumn(name = "book", foreignKey = @ForeignKey(name = "Book_ID_FK"), nullable = false)
+	@JoinColumn(name = "Isbn_Book", foreignKey = @ForeignKey(name = "Catalogue_FK"), nullable = false)
 	private Book book;
 	
 	@Temporal(TemporalType.DATE)
@@ -40,7 +40,7 @@ public class ReaderHistory {
 	public ReaderHistory() {
 	
 	}
-	
+
 	/**
 	 * @return the readerHist_ID
 	 */
@@ -56,17 +56,31 @@ public class ReaderHistory {
 	}
 
 	/**
-	 * @return the book_ID
+	 * @return the reader
 	 */
-	public Book getBook_ID() {
+	public Reader getReader() {
+		return reader;
+	}
+
+	/**
+	 * @param reader the reader to set
+	 */
+	public void setReader(Reader reader) {
+		this.reader = reader;
+	}
+
+	/**
+	 * @return the book
+	 */
+	public Book getCatalogue() {
 		return book;
 	}
 
 	/**
-	 * @param book_ID the book_ID to set
+	 * @param catalogue the book to set
 	 */
-	public void setBook_ID(Book book_ID) {
-		this.book = book_ID;
+	public void setBook(Book book) {
+		this.book = book;
 	}
 
 	/**

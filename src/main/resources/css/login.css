@@ -6,7 +6,7 @@
 }
 
 #head {
-	-fx-background-color: #009ab0;
+	-fx-background-color: #05668D;
 	-fx-opacity: 0.9;
 }
 
@@ -26,7 +26,7 @@
 
 #paneLogAndPass{
 	-fx-background-radius: 50;
-	-fx-background-color: #009ab0;
+	-fx-background-color: #05668D;
 }
 
 #loginField,#passField{

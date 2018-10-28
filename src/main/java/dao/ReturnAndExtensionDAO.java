@@ -3,12 +3,18 @@ package dao;
 import org.hibernate.query.Query;
 
 import entities.LendBook;
+import entities.ReaderHistory;
 import util.HibernateUtil;
 
 public class ReturnAndExtensionDAO {
 	
-	public void returnBook (long bookID) {
+	public void returnBook (ReaderHistory readerHist, LendBook lendBook) {
+		HibernateUtil.openSessionWithTransaction();
 		
+		HibernateUtil.getCurrentSession().save(readerHist);
+		HibernateUtil.getCurrentSession().delete(lendBook);
+		
+		HibernateUtil.closeSessionWithTransaction();
 	}
 
 	public LendBook extensionBook(long bookID) {
