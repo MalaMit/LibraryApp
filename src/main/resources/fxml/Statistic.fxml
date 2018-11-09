@@ -105,7 +105,7 @@
                            <font>
                               <Font name="Arial Bold" size="14.0" />
                            </font></Label>
-                        <Label fx:id="borrowLabel" prefHeight="30.0" prefWidth="50.0">
+                        <Label fx:id="lendLabel" prefHeight="30.0" prefWidth="50.0">
                            <HBox.margin>
                               <Insets left="20.0" />
                            </HBox.margin>
