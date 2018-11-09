@@ -11,9 +11,9 @@ public class BookDAO {
 	public ObservableList<Book> allBooks() {
 
 		HibernateUtil.openSessionWithTransaction();
-
-		Query<Book> query = HibernateUtil.getCurrentSession().createQuery("select book from Book book");
-		ObservableList<Book> books = FXCollections.observableArrayList(query.getResultList());
+		
+			Query<Book> query = HibernateUtil.getCurrentSession().createQuery("select book from Book book");
+			ObservableList<Book> books = FXCollections.observableArrayList(query.getResultList());
 
 		HibernateUtil.closeSessionWithTransaction();
 
@@ -24,7 +24,7 @@ public class BookDAO {
 
 		HibernateUtil.openSessionWithTransaction();
 
-		HibernateUtil.getCurrentSession().delete(book);
+			HibernateUtil.getCurrentSession().delete(book);
 
 		HibernateUtil.closeSessionWithTransaction();
 	}
@@ -32,16 +32,16 @@ public class BookDAO {
 	public boolean createBook(Book book) {
 
 		HibernateUtil.openSessionWithTransaction();
-
-		Query query = HibernateUtil.getCurrentSession()
-				.createQuery("select book.title from Book book where book.isbn = :isbn")
-				.setParameter("isbn", book.getIsbn());
-
-		if (query.uniqueResult() == null) {
-			HibernateUtil.getCurrentSession().save(book);
-			HibernateUtil.closeSessionWithTransaction();
-			return true;
-		}
+	
+			Query query = HibernateUtil.getCurrentSession()
+					.createQuery("select book.title from Book book where book.isbn = :isbn")
+					.setParameter("isbn", book.getIsbn());
+	
+			if (query.uniqueResult() == null) {
+				HibernateUtil.getCurrentSession().save(book);
+				HibernateUtil.closeSessionWithTransaction();
+				return true;
+			}
 		HibernateUtil.closeSessionWithTransaction();
 
 		return false;
@@ -51,47 +51,60 @@ public class BookDAO {
 
 		HibernateUtil.openSessionWithTransaction();
 
-		HibernateUtil.getCurrentSession().update(book);
+			HibernateUtil.getCurrentSession().update(book);
 
 		HibernateUtil.closeSessionWithTransaction();
 	}
 	
 	public ObservableList<Book> searchBook(String parameter, String variant) {
 		HibernateUtil.openSessionWithTransaction();
-
-		Query query = null;
-
-		switch (variant) {
-		case "0":
-			query = HibernateUtil.getCurrentSession().createQuery("select book from Book book where book.isbn = :isbn")
-					.setParameter("isbn", Long.valueOf(parameter));
-			break;
-
-		case "1":
-			query = HibernateUtil.getCurrentSession()
-					.createQuery("select book from Book book where book.autor = :autor")
-					.setParameter("autor", parameter);
-			break;
-
-		case "2":
-			query = HibernateUtil.getCurrentSession()
-					.createQuery("select book from Book book where book.title = :title")
-					.setParameter("title", parameter);
-			break;
-
-		case "3":
-			query = HibernateUtil.getCurrentSession().createQuery("select book from Book book where book.type = :type")
-					.setParameter("type", parameter);
-			break;
-
-		default:
-			break;
-		}
-
-		ObservableList<Book> books = FXCollections.observableArrayList(query.getResultList());
+	
+			Query query = null;
+	
+			switch (variant) {
+			case "0":
+				query = HibernateUtil.getCurrentSession().createQuery("select book from Book book where book.isbn = :isbn")
+						.setParameter("isbn", Long.valueOf(parameter));
+				break;
+	
+			case "1":
+				query = HibernateUtil.getCurrentSession()
+						.createQuery("select book from Book book where book.autor = :autor")
+						.setParameter("autor", parameter);
+				break;
+	
+			case "2":
+				query = HibernateUtil.getCurrentSession()
+						.createQuery("select book from Book book where book.title = :title")
+						.setParameter("title", parameter);
+				break;
+	
+			case "3":
+				query = HibernateUtil.getCurrentSession().createQuery("select book from Book book where book.type = :type")
+						.setParameter("type", parameter);
+				break;
+	
+			default:
+				break;
+			}
+	
+			ObservableList<Book> books = FXCollections.observableArrayList(query.getResultList());
 
 		HibernateUtil.closeSessionWithTransaction();
 
 		return books;
+	}
+	
+	public long countBook () {
+		long result = 0;
+		
+		HibernateUtil.openSessionWithTransaction();
+		
+			Query query = HibernateUtil.getCurrentSession().createQuery("select count(book) from Book book");
+			result = (Long)query.uniqueResult();
+			
+		HibernateUtil.closeSessionWithTransaction();
+		
+		return result;
 	}
 }

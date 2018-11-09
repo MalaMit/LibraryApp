@@ -14,13 +14,13 @@ public class AdministratorDAO {
 		boolean result = false;
 
 		HibernateUtil.openSessionWithTransaction();
-		
-		Query query = HibernateUtil.getCurrentSession()
-				.createQuery("select administrator from Administrator administrator where administrator.login = :login")
-				.setParameter("login", login);
-
-		List<Administrator> administrator = query.getResultList();
-
+			
+			Query query = HibernateUtil.getCurrentSession()
+					.createQuery("select administrator from Administrator administrator where administrator.login = :login")
+					.setParameter("login", login);
+	
+			List<Administrator> administrator = query.getResultList();
+	
 		HibernateUtil.closeSessionWithTransaction();
 
 		if (!administrator.isEmpty()) {
@@ -30,12 +30,3 @@ public class AdministratorDAO {
 		return result;
 	}
 }
-
-/*
- * Administrator administrator = new Administrator("jdj", "ddd", "ddd", "ddd");
- * 
- * HibernateUtil.openSessionWithTransaction();
- * HibernateUtil.getCurrentSession().save(administrator);
- * HibernateUtil.getCurrentSession().flush();
- * HibernateUtil.closeSessionWithTransaction();
- */
