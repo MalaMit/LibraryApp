@@ -1,5 +1,6 @@
 package dao;
 
+import entities.ReaderHistory;
 import org.hibernate.query.Query;
 
 import entities.Reader;
@@ -107,4 +108,15 @@ public class ReaderDAO {
 		return result;
 	}
 
+	public ObservableList<ReaderHistory> showAllReaderHistory (Reader reader){
+		HibernateUtil.openSessionWithTransaction();
+
+			Query query = HibernateUtil.getCurrentSession().createQuery("Select readerH from ReaderHistory readerH where readerH.reader.id =:readerID")
+					.setParameter("readerID", reader.getReader_ID());
+			ObservableList<ReaderHistory> readerHistory = FXCollections.observableArrayList(query.getResultList());
+
+		HibernateUtil.closeSessionWithTransaction();
+
+		return readerHistory;
+	}
 }

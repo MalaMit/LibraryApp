@@ -201,7 +201,39 @@ public class CatalogueController implements Initializable {
 	
     @FXML
     void bookLocalization(ActionEvent event) {
-    	System.out.println(bookTable.getSelectionModel().getSelectedItem().getAutor());
-    }
+		if(!bookTable.getSelectionModel().isEmpty()) {
 
+			coverPane.setPrefHeight(coverPane.getScene().getHeight());
+
+			Parent parent = null;
+
+			try {
+				FXMLLoader loader = new FXMLLoader();
+				parent = loader.load(getClass().getResource("/fxml/BookLocolization.fxml").openStream());
+				BookLocalizationController bookLocalizationController = (BookLocalizationController) loader.getController();
+				bookLocalizationController
+						.searchBookByIsbn(bookTable.getSelectionModel().getSelectedItem());
+
+				Scene scene = new Scene(parent);
+
+				scene.getStylesheets().add(getClass().getResource("/css/bookLocalization.css").toExternalForm());
+
+				Stage window = new Stage();
+
+				window.setScene(scene);
+				window.initModality(Modality.APPLICATION_MODAL);
+				window.initStyle(StageStyle.UNDECORATED);
+				window.setTitle("Book Localization");
+				window.setResizable(false);
+				window.showAndWait();
+
+			} catch (IOException e) {
+				e.printStackTrace();
+			}
+
+			coverPane.setPrefHeight(0);
+
+			bookTable.setItems(bookDAO.allBooks());
+		}
+    }
 }

@@ -19,7 +19,7 @@ public class Book {
 	@Column(name  = "autor", columnDefinition = "VARCHAR(40)", nullable=false)
 	private String autor;
 	
-	@Column(name = "publication_year", columnDefinition = "int", nullable=false)
+	@Column(name = "publication_year", columnDefinition = "int(4)", nullable=false)
 	private int publication_year;
 	
 	@Column(name = "type", columnDefinition = "VARCHAR(30)", nullable=false)

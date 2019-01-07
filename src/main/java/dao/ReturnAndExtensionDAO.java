@@ -17,7 +17,11 @@ public class ReturnAndExtensionDAO {
 		
 			HibernateUtil.getCurrentSession().save(readerHist);
 			HibernateUtil.getCurrentSession().delete(lendBook);
-		
+
+			Query queryChangeStatus = HibernateUtil.getCurrentSession().createQuery("UPDATE Catalogue set localization='Returned' where book_ID = :book_ID")
+				.setParameter("book_ID", lendBook.getCatalogue().getBook_ID());
+			queryChangeStatus.executeUpdate();
+
 		HibernateUtil.closeSessionWithTransaction();
 	}
 

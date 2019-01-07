@@ -24,7 +24,7 @@
 
 			<!-- Drop the existing tables and create new one -->
 
-			<property name="hbm2ddl.auto">update</property>
+			<!--<property name="hbm2ddl.auto">update</property>-->
 
 			<!-- Mapped classes -->
 			<mapping class="entities.Administrator" />

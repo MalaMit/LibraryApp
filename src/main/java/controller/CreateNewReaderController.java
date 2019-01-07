@@ -62,8 +62,19 @@ public class CreateNewReaderController implements Initializable {
 			readerDAO.createReader(reader);
 
 			mainStackPCreate.getScene().getWindow().hide();
-    	}
-    }
+    	}else{
+			if(!name)
+				nameField.setStyle("-fx-background-color: #ff0000;");
+			if(!surname)
+				surnameField.setStyle("-fx-background-color: #ff0000;");
+			if(!address)
+				addressField.setStyle("-fx-background-color: #ff0000;");
+			if(!pesel)
+				peselField.setStyle("-fx-background-color: #ff0000;");
+			if(!phoneNumber)
+				phoneField.setStyle("-fx-background-color: #ff0000;");
+		}
+	}
     
 	@Override
 	public void initialize(URL location, ResourceBundle resources) {

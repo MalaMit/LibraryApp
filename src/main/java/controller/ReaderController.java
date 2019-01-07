@@ -52,7 +52,7 @@ public class ReaderController implements Initializable {
 	private JFXButton deleteReaderButt;
 
     @FXML
-    private JFXButton userHistoryButton;
+    private JFXButton readerHistoryButton;
 
 	@FXML
 	private TableView<Reader> tableReader;
@@ -204,8 +204,40 @@ public class ReaderController implements Initializable {
 	}
 	
     @FXML
-    void showUserHistory(ActionEvent event) {
+    void showReaderHistory(ActionEvent event) {
+		if(!tableReader.getSelectionModel().isEmpty()) {
 
+			coverPane.setPrefHeight(coverPane.getScene().getHeight());
+
+			Parent parent = null;
+
+			try {
+				FXMLLoader loader = new FXMLLoader();
+				parent = loader.load(getClass().getResource("/fxml/ReaderHistory.fxml").openStream());
+				ReaderHistoryController readerHistoryController = (ReaderHistoryController) loader.getController();
+				readerHistoryController
+						.setValumeForTable(tableReader.getSelectionModel().getSelectedItem());
+
+				Scene scene = new Scene(parent);
+
+				scene.getStylesheets().add(getClass().getResource("/css/readerHistory.css").toExternalForm());
+
+				Stage window = new Stage();
+
+				window.setScene(scene);
+				window.initModality(Modality.APPLICATION_MODAL);
+				window.initStyle(StageStyle.UNDECORATED);
+				window.setTitle("History");
+				window.setResizable(false);
+				window.showAndWait();
+
+			} catch (IOException e) {
+				e.printStackTrace();
+			}
+
+			coverPane.setPrefHeight(0);
+
+			tableReader.setItems(readearDAO.allReaders());
+		}
     }
-
 }

@@ -1,0 +1,30 @@
+AnchorPane{
+    -fx-border-color: #009ab0;
+    -fx-border-width: 3;
+    -fx-background-color: #F0F3BD;
+}
+
+JFXButton{
+    -fx-background-color:  #02C39A;
+    -fx-background-radius: 30;
+    -fx-font-family: "Arial";
+    -fx-font-weight: bold;
+    -fx-font-size: 12px;
+}
+
+#closeButtonID, #applyButtonID{
+    -fx-font-size: 15px;
+}
+
+TextField{
+    -fx-font-family: "Arial";
+    -fx-font-size: 20px;
+    -fx-font-weight: bold;
+    -fx-background-radius: 30;
+}
+
+Label{
+    -fx-font-family: "Arial";
+    -fx-font-size: 15px;
+    -fx-font-weight: bold;
+}

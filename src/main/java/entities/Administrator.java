@@ -13,8 +13,8 @@ public class Administrator {
 	
 	@Id
 	@GeneratedValue(strategy = GenerationType.IDENTITY)
-	@Column(name = "admin_ID", columnDefinition = "int(10)")
-	private int admin_ID;
+	@Column(name = "admin_ID", columnDefinition = "bigint(20)")
+	private long admin_ID;
 	
 	@Column(name = "name", columnDefinition = "VARCHAR(30)" ,nullable=false)
 	private String name;
@@ -35,14 +35,14 @@ public class Administrator {
 	/**
 	 * @return the adminID
 	 */
-	public int getAdminID() {
+	public long getAdminID() {
 		return admin_ID;
 	}
 
 	/**
 	 * @param adminID the adminID to set
 	 */
-	public void setAdminID(int admin_ID) {
+	public void setAdminID(long admin_ID) {
 		this.admin_ID = admin_ID;
 	}
 

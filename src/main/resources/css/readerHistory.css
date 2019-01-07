@@ -1,0 +1,32 @@
+AnchorPane{
+    -fx-border-color: #009ab0;
+    -fx-border-width: 3;
+    -fx-background-color: #F0F3BD;
+}
+
+JFXButton{
+    -fx-background-color:  #02C39A;
+    -fx-background-radius: 30;
+    -fx-font-family: "Arial";
+    -fx-font-weight: bold;
+    -fx-font-size: 12px;
+}
+
+#closeButtonID{
+    -fx-font-size: 15px;
+}
+
+
+.table-view {
+    -fx-background-color: transparent;
+}
+
+.table-view:focused {
+    -fx-background-color: transparent;
+}
+
+.table-column {
+    -fx-alignment: CENTER;
+    -fx-font-family: "Arial";
+    -fx-font-size: 13px;
+}

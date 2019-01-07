@@ -4,6 +4,7 @@ import java.net.URL;
 import java.util.ResourceBundle;
 
 import dao.BookDAO;
+import dataValidation.DataValidation;
 import entities.Book;
 import javafx.event.ActionEvent;
 import javafx.fxml.FXML;
@@ -40,17 +41,35 @@ public class AddNewBookController implements Initializable {
     }
 
     @FXML
-    void createButton(ActionEvent event) { 	
-    	
-    	book.setIsbn(Long.valueOf(isbnField.getText()));
-    	book.setTitle(titleField.getText());
-    	book.setAutor(autorField.getText());
-    	book.setPublication_year(Integer.valueOf(pYearField.getText()));
-    	book.setType(typeField.getText());
-    	
-    	if(bookDAO.createBook(book) == true) {
-    		mainStackPCreate.getScene().getWindow().hide();
-    	}
+    void createButton(ActionEvent event) {
+        boolean isbn = DataValidation.textNumber(isbnField.getText(), 1, 20);
+        boolean title = DataValidation.textAlphabetWithPolishMarks(titleField.getText(), 1, 60);
+        boolean autor = DataValidation.textAlphabetWithPolishMarks(autorField.getText(), 1, 40);
+        boolean publicationYear = DataValidation.textNumber(pYearField.getText(), 4, 4);
+        boolean typeBook = DataValidation.textAlphabetWithPolishMarks(typeField.getText(), 1, 30);
+
+        if(isbn && title && autor && publicationYear &&typeBook) {
+            book.setIsbn(Long.valueOf(isbnField.getText()));
+            book.setTitle(titleField.getText());
+            book.setAutor(autorField.getText());
+            book.setPublication_year(Integer.valueOf(pYearField.getText()));
+            book.setType(typeField.getText());
+
+            if (bookDAO.createBook(book) == true) {
+                mainStackPCreate.getScene().getWindow().hide();
+            }
+        }else{
+            if(!isbn)
+                isbnField.setStyle("-fx-background-color: #ff0000;");
+            if(!title)
+                titleField.setStyle("-fx-background-color: #ff0000;");
+            if(!autor)
+                autorField.setStyle("-fx-background-color: #ff0000;");
+            if(!publicationYear)
+                pYearField.setStyle("-fx-background-color: #ff0000;");
+            if(!typeBook)
+                typeField.setStyle("-fx-background-color: #ff0000;");
+        }
     }
 	
 	@Override

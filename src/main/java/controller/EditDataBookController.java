@@ -4,6 +4,7 @@ import java.net.URL;
 import java.util.ResourceBundle;
 
 import dao.BookDAO;
+import dataValidation.DataValidation;
 import entities.Book;
 import javafx.event.ActionEvent;
 import javafx.fxml.FXML;
@@ -42,15 +43,31 @@ public class EditDataBookController implements Initializable{
 
     @FXML
     void updateButton(ActionEvent event) {
-    	
-    	book.setIsbn(Long.valueOf(isbnField.getText()));
-    	book.setTitle(titleField.getText());
-    	book.setAutor(autorField.getText());
-    	book.setPublication_year(Integer.valueOf(pYearField.getText()));
-    	book.setType(typeField.getText());
-    	
-    	bookDAO.updateBook(book);
-    	mainStackPCreate.getScene().getWindow().hide();
+        boolean title = DataValidation.textAlphabetWithPolishMarks(titleField.getText(), 1, 60);
+        boolean autor = DataValidation.textAlphabetWithPolishMarks(autorField.getText(), 1, 40);
+        boolean publicationYear = DataValidation.textNumber(pYearField.getText(), 4, 4);
+        boolean typeBook = DataValidation.textAlphabetWithPolishMarks(typeField.getText(), 1, 30);
+
+    	if(title && autor && publicationYear && typeBook) {
+    	    book.setIsbn(Long.valueOf(isbnField.getText()));
+            book.setTitle(titleField.getText());
+            book.setAutor(autorField.getText());
+            book.setPublication_year(Integer.valueOf(pYearField.getText()));
+            book.setType(typeField.getText());
+
+            bookDAO.updateBook(book);
+            mainStackPCreate.getScene().getWindow().hide();
+    	}else{
+    	    if(!title)
+    	        titleField.setStyle("-fx-background-color: #ff0000;");
+    	    if(!autor)
+    	        autorField.setStyle("-fx-background-color: #ff0000;");
+    	    if(!publicationYear)
+    	        pYearField.setStyle("-fx-background-color: #ff0000;");
+    	    if(!typeBook)
+    	        typeField.setStyle("-fx-background-color: #ff0000;");
+        }
+
     }
 
 	@Override

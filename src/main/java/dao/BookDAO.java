@@ -22,9 +22,24 @@ public class BookDAO {
 	
 	public void deleteBook(Book book) {
 
+		long result = 0;
+
 		HibernateUtil.openSessionWithTransaction();
 
-			HibernateUtil.getCurrentSession().delete(book);
+			Query queryCataloque = HibernateUtil.getCurrentSession().createQuery("Select count(catalogue) from Catalogue catalogue where catalogue.book.isbn = :isbn")
+					.setParameter("isbn", book.getIsbn());
+			result = (Long) queryCataloque.uniqueResult();
+
+			if (result == 0 ) {
+				Query queryLendBook = HibernateUtil.getCurrentSession().createQuery("Select count(lendBook) from LendBook lendBook where lendBook.catalogue.book.isbn = :isbn")
+						.setParameter("isbn", book.getIsbn());
+				result = (Long) queryLendBook.uniqueResult();
+
+				if (result == 0) {
+					System.out.println(result + " ------3");
+					HibernateUtil.getCurrentSession().delete(book);
+				}
+			}
 
 		HibernateUtil.closeSessionWithTransaction();
 	}

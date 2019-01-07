@@ -64,16 +64,16 @@ public class LendBookController implements Initializable {
 				&& !datePicker.getValue().equals(LocalDate.now())) {
 			if (idRead && IdBook) {
 				if (readerDAO.findReader(Long.valueOf(idReader.getText())) != null
-						&& lendBookDAO.checkExistBook(Long.valueOf(idBook.getText()))) {
-					lendBookDAO.lendBook(Long.valueOf(idBook.getText()), Long.valueOf(idReader.getText()),
-							java.sql.Date.valueOf(datePicker.getValue()));
-					alertMaker.showSimpleAlert("The book has been borrowed.", "applyMassage.css");
+						&& lendBookDAO.checkExistBook(Long.valueOf(idBook.getText()))
+						&& lendBookDAO.bookIsAvaible(Long.valueOf(idBook.getText()))) {
+					lendBookDAO.lendBook(Long.valueOf(idBook.getText()), Long.valueOf(idReader.getText()), java.sql.Date.valueOf(datePicker.getValue()));
+					alertMaker.showSimpleAlert("Saved.", "applyMassage.css");
 					idReader.clear();
 					idBook.clear();
 					datePicker.setValue(LocalDate.now());
 
 				} else {
-					alertMaker.showSimpleAlert("Book or Reader is no correct.\nPlease try again!",
+					alertMaker.showSimpleAlert("The Book has been borrowed.\nPlease try again!",
 							"errorMessage.css");
 				}
 			}else {
