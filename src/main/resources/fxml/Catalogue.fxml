@@ -12,7 +12,7 @@
 <?import javafx.scene.layout.VBox?>
 <?import javafx.scene.text.Font?>
 
-<AnchorPane maxHeight="-Infinity" maxWidth="-Infinity" minHeight="-Infinity" minWidth="-Infinity" prefHeight="660.0" prefWidth="850.0" xmlns="http://javafx.com/javafx/9.0.1" xmlns:fx="http://javafx.com/fxml/1" fx:controller="controller.CatalogueController">
+<AnchorPane maxHeight="-Infinity" maxWidth="-Infinity" minHeight="-Infinity" minWidth="-Infinity" prefHeight="660.0" prefWidth="850.0" xmlns="http://javafx.com/javafx/8.0.171" xmlns:fx="http://javafx.com/fxml/1" fx:controller="controller.CatalogueController">
    <children>
       <HBox alignment="CENTER" prefHeight="100.0" prefWidth="850.0" AnchorPane.leftAnchor="0.0" AnchorPane.rightAnchor="0.0" AnchorPane.topAnchor="0.0">
          <children>
@@ -25,7 +25,7 @@
                      <VBox.margin>
                         <Insets bottom="5.0" top="10.0" />
                      </VBox.margin></Label>
-                  <JFXTextField fx:id="dataSearch" alignment="CENTER" prefHeight="40.0" prefWidth="200.0">
+                  <JFXTextField fx:id="dataSearch" alignment="CENTER" onKeyPressed="#filterTable" prefHeight="40.0" prefWidth="200.0">
                      <VBox.margin>
                         <Insets bottom="10.0" left="30.0" right="30.0" />
                      </VBox.margin></JFXTextField>
@@ -46,14 +46,7 @@
                      </VBox.margin></JFXComboBox>
                </children>
             </VBox>
-            <VBox alignment="CENTER" prefHeight="80.0" prefWidth="300.0">
-               <children>
-                  <JFXButton fx:id="searchButt" onAction="#search" prefHeight="50.0" prefWidth="200.0" text="Search">
-                     <VBox.margin>
-                        <Insets bottom="10.0" top="30.0" />
-                     </VBox.margin></JFXButton>
-               </children>
-            </VBox>
+            <VBox alignment="CENTER" prefHeight="80.0" prefWidth="300.0" />
          </children>
       </HBox>
       <VBox layoutX="722.0" layoutY="110.0" prefHeight="550.0" prefWidth="128.0" AnchorPane.bottomAnchor="0.0" AnchorPane.rightAnchor="0.0" AnchorPane.topAnchor="110.0">
@@ -106,13 +99,13 @@
          </children>
       </VBox>
       <TableView fx:id="bookTable" layoutY="140.0" prefHeight="520.0" prefWidth="720.0" AnchorPane.bottomAnchor="0.0" AnchorPane.leftAnchor="-1.0" AnchorPane.rightAnchor="130.0" AnchorPane.topAnchor="100.0">
-        <columns>
-          <TableColumn fx:id="isbnColumn" prefWidth="75.0" text="ISBN" />
+         <columns>
+            <TableColumn fx:id="isbnColumn" prefWidth="75.0" text="ISBN" />
             <TableColumn fx:id="tittleColumn" prefWidth="75.0" text="Tittle" />
             <TableColumn fx:id="autorColumn" prefWidth="75.0" text="Autor" />
             <TableColumn fx:id="publicationYearColumn" prefWidth="75.0" text="Publication Year" />
             <TableColumn fx:id="typeColumn" prefWidth="75.0" text="Type" />
-        </columns>
+         </columns>
       </TableView>
       <AnchorPane fx:id="coverPane" layoutX="10.0" layoutY="10.0" prefHeight="0.0" prefWidth="850.0" AnchorPane.leftAnchor="0.0" AnchorPane.rightAnchor="0.0" AnchorPane.topAnchor="0.0" />
    </children>
