@@ -17,10 +17,6 @@ public class Main extends Application {
 
 	@Override
 	public void start(Stage stage) {
-		
-		HibernateUtil.openSessionWithTransaction();
-		HibernateUtil.closeSessionWithTransaction();
-		
 		setPrimaryStage(stage);
 		try {
 			Parent root = FXMLLoader.load(getClass().getResource("/fxml/Login.fxml"));
@@ -35,6 +31,11 @@ public class Main extends Application {
 		} catch (Exception e) {
 			e.printStackTrace();
 		}
+
+		new Thread(()->{
+			HibernateUtil.openSessionWithTransaction();
+			HibernateUtil.closeSessionWithTransaction();
+		}).start();
 	}
 
 	public static void main(String[] args) {

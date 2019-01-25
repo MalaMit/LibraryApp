@@ -24,10 +24,10 @@ import javafx.scene.input.KeyCode;
 import javafx.scene.layout.AnchorPane;
 import startApp.Main;
 
+import javax.imageio.IIOException;
+
 public class LoginController implements Initializable {
-	private AdministratorDAO adm = new AdministratorDAO();
-	
-	
+
 	@FXML
     private AnchorPane backGround;
 
@@ -60,13 +60,15 @@ public class LoginController implements Initializable {
 
     private double xOffSet;
     private double yOffSet;
-    
+	private AdministratorDAO adm = new AdministratorDAO();
     private AlertMaker alertMaker = new AlertMaker();
     
 	@Override
 	public void initialize(URL arg0, ResourceBundle arg1) {	
-		moveWindow();
-		
+		new Thread(()->{
+			moveWindow();
+		}).start();
+
 		passField.setOnKeyPressed(e->{
 			if(e.getCode() == KeyCode.ENTER){
 				login(null);
@@ -146,5 +148,4 @@ public class LoginController implements Initializable {
     		head.setCursor(javafx.scene.Cursor.DEFAULT);
 		});
 	}
-
 }

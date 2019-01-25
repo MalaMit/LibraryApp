@@ -8,6 +8,8 @@ import javafx.collections.FXCollections;
 import javafx.collections.ObservableList;
 import util.HibernateUtil;
 
+import java.lang.reflect.InvocationTargetException;
+
 public class ReaderDAO {
 
 	public ObservableList<Reader> allReaders() {

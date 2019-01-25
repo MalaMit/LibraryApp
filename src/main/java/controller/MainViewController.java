@@ -81,7 +81,9 @@ public class MainViewController implements Initializable {
 
 	@Override
 	public void initialize(URL location, ResourceBundle resources) {
-		moveWindow();
+		new Thread(()->{
+			moveWindow();
+		}).start();
 		
 		lendBookButt.setOnMouseClicked(e->{
 			setButtDefaultColor(nameButton);
@@ -287,5 +289,4 @@ public class MainViewController implements Initializable {
 			break;
 		}
 	}
-
 }

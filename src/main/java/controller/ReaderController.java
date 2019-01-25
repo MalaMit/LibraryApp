@@ -15,6 +15,8 @@ import javafx.beans.property.SimpleObjectProperty;
 import javafx.beans.property.SimpleStringProperty;
 import javafx.collections.FXCollections;
 import javafx.collections.ObservableList;
+import javafx.collections.transformation.FilteredList;
+import javafx.collections.transformation.SortedList;
 import javafx.event.ActionEvent;
 import javafx.fxml.FXML;
 import javafx.fxml.FXMLLoader;
@@ -23,24 +25,22 @@ import javafx.scene.Parent;
 import javafx.scene.Scene;
 import javafx.scene.control.TableColumn;
 import javafx.scene.control.TableView;
+import javafx.scene.input.KeyEvent;
 import javafx.scene.layout.AnchorPane;
 import javafx.stage.Modality;
 import javafx.stage.Stage;
 import javafx.stage.StageStyle;
 
 public class ReaderController implements Initializable {
-	
-    @FXML
-    private AnchorPane coverPane;
+
+	@FXML
+	private AnchorPane coverPane;
 
 	@FXML
 	private JFXTextField dataField;
 
 	@FXML
 	private JFXComboBox<String> typeSearch;
-
-	@FXML
-	private JFXButton searchButt;
 
 	@FXML
 	private JFXButton createReaderButt;
@@ -51,8 +51,8 @@ public class ReaderController implements Initializable {
 	@FXML
 	private JFXButton deleteReaderButt;
 
-    @FXML
-    private JFXButton readerHistoryButton;
+	@FXML
+	private JFXButton readerHistoryButton;
 
 	@FXML
 	private TableView<Reader> tableReader;
@@ -78,36 +78,39 @@ public class ReaderController implements Initializable {
 	private ReaderDAO readearDAO = new ReaderDAO();
 	private ObservableList<Reader> readers = readearDAO.allReaders();
 	private ObservableList<String> typeToSearchReader = FXCollections.observableArrayList("Identifical Number", "Name and surname", "Pesel");
-	
+	private FilteredList<Reader> filteredData = new FilteredList<>(readers, p -> true);
+
 	@Override
 	public void initialize(URL location, ResourceBundle resources) {
-		
+
 		idReaderColumn.setCellValueFactory(cellData -> new SimpleObjectProperty<>(cellData.getValue().getReader_ID()));
 		nameReaderColumn.setCellValueFactory(cellData -> new SimpleStringProperty(cellData.getValue().getName()));
 		surnameReaderColumn.setCellValueFactory(cellData -> new SimpleStringProperty(cellData.getValue().getSurname()));
 		peselReaderColumn.setCellValueFactory(cellData -> new SimpleObjectProperty<>(cellData.getValue().getPesel()));
 		addressReaderColumn.setCellValueFactory(cellData -> new SimpleStringProperty(cellData.getValue().getAddress()));
 		phoneReaderColumn.setCellValueFactory(cellData -> new SimpleStringProperty(cellData.getValue().getPhone_number()));
-		
-		tableReader.setItems(readers);
-		
-		typeSearch.setItems(typeToSearchReader);
-		
-		tableReader.heightProperty().addListener(e->{
-			idReaderColumn.setPrefWidth((tableReader.getWidth()/6));
-			nameReaderColumn.setPrefWidth((tableReader.getWidth()/6));
-			surnameReaderColumn.setPrefWidth((tableReader.getWidth()/6));
-			peselReaderColumn.setPrefWidth((tableReader.getWidth()/6));
-			addressReaderColumn.setPrefWidth((tableReader.getWidth()/6));
-			phoneReaderColumn.setPrefWidth((tableReader.getWidth()/6));
+
+		new Thread(()->{
+			typeSearch.setItems(typeToSearchReader);
+			typeSearch.setValue("Identifical Number");
+			tableReader.setItems(readers);
+		}).start();
+
+		tableReader.heightProperty().addListener(e -> {
+			idReaderColumn.setPrefWidth((tableReader.getWidth() / 6));
+			nameReaderColumn.setPrefWidth((tableReader.getWidth() / 6));
+			surnameReaderColumn.setPrefWidth((tableReader.getWidth() / 6));
+			peselReaderColumn.setPrefWidth((tableReader.getWidth() / 6));
+			addressReaderColumn.setPrefWidth((tableReader.getWidth() / 6));
+			phoneReaderColumn.setPrefWidth((tableReader.getWidth() / 6));
 		});
-		
+
 	}
-	
+
 	@FXML
 	void createReader(ActionEvent event) {
 		coverPane.setPrefHeight(coverPane.getScene().getHeight());
-		
+
 		Parent parent = null;
 		try {
 			parent = FXMLLoader.load(getClass().getResource("/fxml/CreateNewReader.fxml"));
@@ -127,26 +130,26 @@ public class ReaderController implements Initializable {
 		} catch (IOException e) {
 			e.printStackTrace();
 		}
-		
+
 		coverPane.setPrefHeight(0);
-		
+
 		tableReader.setItems(readearDAO.allReaders());
 	}
 
 	@FXML
 	void deleteReader(ActionEvent event) {
 		if (!tableReader.getSelectionModel().isEmpty()) {
-				readearDAO.deleteReader(tableReader.getSelectionModel().getSelectedItem());
-				tableReader.setItems(readearDAO.allReaders());
+			readearDAO.deleteReader(tableReader.getSelectionModel().getSelectedItem());
+			tableReader.setItems(readearDAO.allReaders());
 		}
 	}
 
 	@FXML
 	void editReader(ActionEvent event) {
-		if(!tableReader.getSelectionModel().isEmpty()) {
-			
+		if (!tableReader.getSelectionModel().isEmpty()) {
+
 			coverPane.setPrefHeight(coverPane.getScene().getHeight());
-			
+
 			Parent parent = null;
 
 			try {
@@ -172,37 +175,52 @@ public class ReaderController implements Initializable {
 			} catch (IOException e) {
 				e.printStackTrace();
 			}
-			
+
 			coverPane.setPrefHeight(0);
-			
+
 			tableReader.setItems(readearDAO.allReaders());
 		}
 	}
 
 	@FXML
-	void search(ActionEvent event) {
-		if(!typeSearch.getSelectionModel().isEmpty() && !dataField.getText().isEmpty()){
-			switch (typeSearch.getSelectionModel().getSelectedItem()) {
-			case "Identifical Number":
-				if(DataValidation.textNumber(dataField.getText(), 1, 20))
-					readers = readearDAO.searchReader(dataField.getText(), "0");
-				break;
-			case "Name and surname":
-				if(DataValidation.nameAndSurname(dataField.getText()))
-					readers = readearDAO.searchReader(dataField.getText(), "1");
-				break;
-			case "Pesel":
-				if(DataValidation.textNumber(dataField.getText(), 1, 20))
-					readers = readearDAO.searchReader(dataField.getText(), "2");
-				break;
-			default:
-				readers.clear();
-				break;
-			}
-			tableReader.setItems(readers);
-		}
+	void filterTable(KeyEvent event) {
+		dataField.textProperty().addListener((observable, oldValue, newValue) -> {
+			filteredData.setPredicate(reader -> {
+				if (newValue == null || newValue.isEmpty()) {
+					return true;
+				}
+
+				String lowerCaseFilter = newValue.toLowerCase();
+
+				switch (typeSearch.getSelectionModel().getSelectedItem()) {
+					case "Identifical Number":
+						if (String.valueOf(reader.getReader_ID()).toLowerCase().contains(lowerCaseFilter)) {
+							return true;
+						}
+						break;
+					case "Name and surname":
+						StringBuilder sb = new StringBuilder().append(reader.getName()).append(" ").append(reader.getSurname());
+						if (sb.toString().toLowerCase().contains(lowerCaseFilter)) {
+							return true;
+						}
+						break;
+					case "Pesel":
+						if (String.valueOf(reader.getPesel()).toLowerCase().contains(lowerCaseFilter)) {
+							return true;
+						}
+						break;
+				}
+				return false;
+			});
+		});
+
+		SortedList<Reader> sortedData = new SortedList<>(filteredData);
+
+		sortedData.comparatorProperty().bind(tableReader.comparatorProperty());
+
+		tableReader.setItems(sortedData);
 	}
-	
+
     @FXML
     void showReaderHistory(ActionEvent event) {
 		if(!tableReader.getSelectionModel().isEmpty()) {
